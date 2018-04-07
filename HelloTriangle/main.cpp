@@ -928,6 +928,8 @@ private:
 			glfwPollEvents();
 			drawFrame();
 		}
+
+		vkDeviceWaitIdle(device);
 	}
 
 	void cleanup() {
@@ -937,19 +939,20 @@ private:
 		DestroyDebugReportCallbackEXT(instance, callback, nullptr);
 		vkDestroyPipelineLayout(device, pipelineLayout, nullptr);
 		vkDestroyRenderPass(device, renderPass, nullptr);
-		vkDestroySurfaceKHR(instance, surface, nullptr);
-		vkDestroyInstance(instance, nullptr);
+		vkDestroyPipeline(device, graphicsPipeline, nullptr);
 		vkDestroySwapchainKHR(device, swapChain, nullptr);
-		for(auto i = 0; i < swapChainFrameBuffers.size(); i++)
+		for (auto i = 0; i < swapChainFrameBuffers.size(); i++)
 		{
 			vkDestroyFramebuffer(device, swapChainFrameBuffers[i], nullptr);
 		}
-		for(auto imageView : swapChainImageViews)
+		for (auto imageView : swapChainImageViews)
 		{
 			vkDestroyImageView(device, imageView, nullptr);
 		}
 		vkDestroyDevice(device, nullptr);
-		vkDestroyPipeline(device, graphicsPipeline, nullptr);
+		vkDestroySurfaceKHR(instance, surface, nullptr);
+		vkDestroyInstance(instance, nullptr);
+		
 		glfwDestroyWindow(window);
 		glfwTerminate();
 	}
