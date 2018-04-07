@@ -882,11 +882,16 @@ private:
 		createSemaPhores();
 	}
 
-	void drawFrame()
+	void updateAppState()
+	{
+		
+	};
+
+	void submitDrawCommands()
 	{
 		uint32_t imageIndex;
 		vkAcquireNextImageKHR(device, swapChain, std::numeric_limits<uint64_t>::max(),
-			imageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
+		                      imageAvailableSemaphore, VK_NULL_HANDLE, &imageIndex);
 		VkSubmitInfo submitInfo = {};
 		submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
 		
@@ -919,6 +924,13 @@ private:
 		presentInfo.pResults = nullptr;
 
 		vkQueuePresentKHR(presentQueue, &presentInfo);
+	}
+
+	void drawFrame()
+	{
+		updateAppState();
+		vkQueueWaitIdle(presentQueue);
+		submitDrawCommands();
 
 	};
 
