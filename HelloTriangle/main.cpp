@@ -1,11 +1,11 @@
 #define GLFW_INCLUDE_VULKAN
-#include "..\..\glfw-3.2.1.bin.WIN64\include\GLFW\glfw3.h"
-#include "..\..\glfw-3.2.1.bin.WIN64\include\GLFW\glfw3native.h"
+#include <GLFW/glfw3.h>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/matrix.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#include "..\..\glm-0.9.9-a2\glm\vec3.hpp"
-#include "..\..\glm-0.9.9-a2\glm\gtc\matrix_transform.hpp"
-#include "..\..\glm-0.9.9-a2\glm\mat4x4.hpp"
 #include <stdexcept>
 #include <functional>
 #include <iostream>
@@ -14,7 +14,6 @@
 #include <algorithm>
 #include <chrono>
 #include <fstream>
-#include <..\..\glm-0.9.9-a2\glm\glm.hpp>
 #include <array>
 
 VkResult CreateDebugReportCallbackEXT(VkInstance instance,
