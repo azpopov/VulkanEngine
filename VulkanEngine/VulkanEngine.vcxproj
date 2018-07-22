@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{53948bae-7e1a-4804-bdf3-edce380a2f39}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>HelloTriangle</RootNamespace>
+    <RootNamespace>VulkanEngine</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
